@@ -145,15 +145,15 @@ class ALO_EasyMail_Custom_Functions {
 	 */
 	public function init() {
 		$this->strings = array(
-			'read_now'				=> 'Read Now',
-			'more_title'			=> 'More from our Blog',
-			'more_button'			=> 'Read more from our Blog',
-			'footer_copyright'		=> 'This email was sent with <font style="color:#ee6062;">&hearts;</font> by &copy; <a href="[SITE-URL]" target="new" class="links" style="margin:0;clear:both;text-align:center;line-height:24px;font-size:13px;color:#888;text-decoration:none;" >[SITE-NAME]</a>',
-			'footer_sender_id'		=> 'Owner: Antonio de Carvalho<br>An Der Fest 10, 40882 Ratingen, Germany<br>Tel.: +49 2102 5356836 | Email: info@thelittlecraft.com<br>',
-			'footer_unsubscribe'	=> 'If you no longer want to receive messages from us, you can <u><a href="[USER-UNSUBSCRIBE-URL]" style="color:#aaa;font-size:12px;text-decoration:none;">unsubscribe here.</a></u>'
+			'read_now'				=> 'Weiterlesen',
+			'more_title'			=> 'Mehr aus unserem Blog',
+			'more_button'			=> 'Lies mehr aus unserem Blog',
+			'footer_copyright'		=> 'Diese E-Mail wurde mit <font style="color:#ee6062;">&hearts;</font> von &copy; <a href="[SITE-URL]" target="new" class="links" style="margin:0;clear:both;text-align:center;line-height:24px;font-size:13px;color:#888;text-decoration:none;" >[SITE-NAME]</a> geschickt',
+			'footer_sender_id'		=> 'Inhaber: Antonio de Carvalho<br>An Der Fest 10, 40882 Ratingen, Deutschland<br>Tel.: +49 2102 5356836 | E-Mail: info@thelittlecraft.com<br>',
+			'footer_unsubscribe'	=> 'Wenn Du keine Nachrichten mehr von uns erhalten möchtest,  kannst Du sich <u><a href="[USER-UNSUBSCRIBE-URL]" style="color:#aaa;font-size:12px;text-decoration:none;">hier abmelden.</a></u>'
 		);
 		$this->token   = 'alo-em-custom-func';
-		$this->version = '1.0';
+		$this->version = '1.1';
 		$this->_log_version_number();
 	}
 	
@@ -290,7 +290,7 @@ class ALO_EasyMail_Custom_Functions {
 	 * Register newsletter strings for translation with Polylang
 	 */
 	public function translate_newsletter_strings() {
-		if ( class_exists('Polylang') ) {
+		if ( function_exists( 'pll_register_string' ) ) {
 			foreach ( $this->strings as $name => $string ) {
 				$multiline = strlen( $string ) > 50 ? true : false;
 				pll_register_string( $name, $string, 'Newsletters', $multiline );
